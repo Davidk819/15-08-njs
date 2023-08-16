@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const { v4: uuidv4 } = require("uuid");
 const bcrypt = require("bcrypt");
+const validator = require("email-validator");
+const jsonfile = require('jsonfile');
 
 const allUsers = require("./functions");
 
@@ -12,7 +14,8 @@ const users = [
   { id: 3, email: "user3@example.com", password: "12345" },
 ];
 
-const code = {}
+jsonfile.writeFile('data.json',[users],err => {if(err){console.log(err)} })
+
 app.listen(3000, () => {
   console.log("Example app listening on port 3000!");
 });
@@ -20,8 +23,10 @@ app.listen(3000, () => {
 
 app.use(bodyParser.json());
 app.get("/:id", (req, res) => {
-  let id = req.params.id;
-  res.json(users[id - 1].email + users[id - 1].password);
+  let myId = req.params.id;
+  const user = users.findIndex((user) => user.id == myId)
+  let user2 = users[user]
+  res.json(user2);
 });
 app.get("/", (req, res) => {
   res.json(users)
@@ -33,6 +38,9 @@ app.post("/",async (req, res) => {
     if (user.email === newUser.email) {
       return res.send("the email address already in use");
     }
+  }
+  if(!validator.validate(newUser.email)){
+    return res.send('email not valid')
   }
   const newPassword = await bcrypt.hash(req.body.password,8);
   newUser.id = uuidv4();
