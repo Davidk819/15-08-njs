@@ -7,3 +7,4 @@ function allUsers(data) {
     }
     return resolute
 }    
+
