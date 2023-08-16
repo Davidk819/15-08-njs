@@ -1,1 +1,1 @@
-[[{"id":1,"email":"user1@example.com","password":"password123"},{"id":2,"email":"user2@example.com","password":"securepass"},{"id":3,"email":"user3@example.com","password":"12345"}]]
+[[{"id":1,"email":"user1@example.com","password":"password123"},{"id":2,"email":"user2@example.com","password":"securepass"},{"id":3,"email":"user3@example.com","password":"12345"}],{"email":"users3@exple.com","password":"$2b$08$kjxshhFvuOrgM4WWq9w06ufIhMPY.82rderp0VS830ETtdU2i7inm","id":"e3b93542-76a6-4dfd-ba25-0e7c269e1011"}]
