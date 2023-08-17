@@ -6,19 +6,15 @@ const bcrypt = require("bcrypt");
 const validator = require("email-validator");
 const jsonfile = require("jsonfile");
 
-const myFunction = require("./functions");
-
+// const myFunction = require("./functions");
+5
 const users = [
   { id: 1, email: "user1@example.com", password: "password123" },
   { id: 2, email: "user2@example.com", password: "securepass" },
   { id: 3, email: "user3@example.com", password: "12345" },
 ];
 
-jsonfile.writeFile("data.json", [users], (err) => {
-  if (err) {
-    console.log(err);
-  }
-});
+
 
 app.listen(3000, () => {
   console.log("Example app listening on port 3000!");
@@ -61,7 +57,7 @@ app.post("/", async (req, res) => {
 });
 
 app.put("/:id", (req, res) => {
-  let myId = req.body.id;
+  let myId = req.  y.id;
   const user = users.find((user) => user.id === myId);
   const newEmail = user.find(
     (user) => user.email === req.body.email && user.id !== myId
